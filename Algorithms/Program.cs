@@ -1,2 +1,3 @@
-﻿Console.WriteLine("MINH-CONSOLE: 300 Algorithms!!!");
+﻿using Algorithms.Logging;
 
+Logger.Logging("300 Algorithms!!!");

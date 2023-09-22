@@ -1,11 +1,14 @@
-﻿namespace Algorithms
+﻿using Algorithms.Logging;
+using Algorithms.Models;
+
+namespace Algorithms
 {
-    public class Algorithms
+    public class Algorithms_1_20
     {
         public static int[] _1_TwoSum(int[] nums, int target)
         {
             var func = nameof(_1_TwoSum);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             var output = new[] { -1, -1 };
@@ -38,50 +41,60 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, string.Join(", ", output));
+            Logger.LoggingStop(func, string.Join(", ", output));
             return output;
         }
 
-        public static void _2_ValidParentheses()
+        public static bool _2_ValidParentheses(string input)
         {
             var func = nameof(_2_ValidParentheses);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
-            string s = "([])";
-            const char o1 = '(', o2 = '{', o3 = '[';
-            const char c1 = ')', c2 = '}', c3 = ']';
             var output = true;
+            Dictionary<char, char> dictChars = new() {
+                {'(', ')'},
+                {'{', '}'},
+                {'[', ']'},
+            };
 
             // process
-            if (s.Length % 2 != 0)
+            // If the length is not evan -> invalid parentheses
+            if (input.Length % 2 != 0)
             {
                 output = false;
                 goto printOutput;
             }
 
             var tempStack = new Stack<char>();
-            foreach (char c in s)
+            foreach (char c in input)
             {
-                if (c.Equals(o1)) { tempStack.Push(c1); }
-                else if (c.Equals(o2)) { tempStack.Push(c2); }
-                else if (c.Equals(o3)) { tempStack.Push(c3); }
+                if (dictChars.ContainsKey(c))
+                {
+                    // c is open chars
+                    tempStack.Push(dictChars[c]);
+                }
                 else if (tempStack.Count == 0 || c != tempStack.Pop())
                 {
+                    // c is close chars but not matched in the stack
                     output = false;
                     goto printOutput;
                 }
             }
 
+            // After looping, check if in stack any left
+            output = tempStack.Count == 0;
+
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
+            return output;
         }
 
         public static void _3_MergeTwoLists()
         {
             var func = nameof(_3_MergeTwoLists);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             ListNode list1 = new(1, new ListNode(2, new ListNode(4)));
@@ -100,13 +113,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, string.Join(", ", output));
+            Logger.LoggingStop(func, string.Join(", ", output));
         }
 
         public static void _4_MaxProfit()
         {
             var func = nameof(_4_MaxProfit);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             int[] prices = new int[] { 7, 1, 5, 3, 6, 4 };
@@ -132,13 +145,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _5_ValidPalindrome()
         {
             var func = nameof(_5_ValidPalindrome);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             var input = "A man, a plan, a canal: Panama";
@@ -171,13 +184,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _6_InvertTree()
         {
             var func = nameof(_6_InvertTree);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             TreeNode root = new(4, new(2, new(1), new(3)), new(7, new(6), new(9)));
@@ -190,13 +203,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output);
+            Logger.LoggingStop(func, output);
         }
 
         public static void _7_ValidAnagram()
         {
             var func = nameof(_7_ValidAnagram);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             string s = "anagram", t = "nagaram";
@@ -241,13 +254,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _8_BinarySearch()
         {
             var func = nameof(_8_BinarySearch);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             int[] nums = new int[] { -1, 0, 3, 5, 9, 12 };
@@ -268,13 +281,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _9_FloodFill()
         {
             var func = nameof(FloodFill);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             int[][] image = new[]
@@ -316,13 +329,13 @@
             }
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _10_MaxSubArray()
         {
             var func = nameof(_10_MaxSubArray);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             int[] nums = new int[] { -2, 1, -3, 4, -1, 2, 1, -5, 4 };
@@ -339,13 +352,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _11_LowestCommonAncestor()
         {
             var func = nameof(_11_LowestCommonAncestor);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             TreeNode root = new(6,
@@ -360,13 +373,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _12_BalancedBinaryTree()
         {
             var func = nameof(_12_BalancedBinaryTree);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             TreeNode root = new(1,
@@ -388,13 +401,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _13_LinkedListCycle(ListNode input)
         {
             var func = nameof(_13_LinkedListCycle);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             var output = false;
 
@@ -422,13 +435,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _13_2_LinkedListCycle(ListNode input)
         {
             var func = nameof(_13_2_LinkedListCycle);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             var output = true;
 
@@ -456,13 +469,13 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
 
         public static void _15_FirstBadVersion()
         {
             var func = nameof(_15_FirstBadVersion);
-            Logging.LoggingStart(func);
+            Logger.LoggingStart(func);
 
             // input
             var n = 2126753390;
@@ -495,7 +508,7 @@
 
         printOutput:
             // output
-            Logging.LoggingStop(func, output.ToString());
+            Logger.LoggingStop(func, output.ToString());
         }
     }
 }

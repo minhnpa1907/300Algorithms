@@ -1,4 +1,4 @@
-﻿namespace Algorithms
+﻿namespace Algorithms.Models
 {
     public class ListNode
     {

@@ -13,7 +13,7 @@
         public void TwoSum_EqualTest(int[] nums, int target, int[] result)
         {
             // Act
-            var output = Algorithms._1_TwoSum(nums, target);
+            var output = Algorithms_1_20._1_TwoSum(nums, target);
 
             // Assert
             Assert.That(output, Is.EqualTo(result));
@@ -26,7 +26,7 @@
         public void TwoSum_NotEqualTest(int[] nums, int target, int[] result)
         {
             // Act
-            var output = Algorithms._1_TwoSum(nums, target);
+            var output = Algorithms_1_20._1_TwoSum(nums, target);
 
             // Assert
             Assert.That(output, !Is.EqualTo(result));
