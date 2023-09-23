@@ -1,4 +1,5 @@
-﻿namespace Algorithms.UnitTests._1_20
+﻿// Author: minhnpa1907
+namespace Algorithms.UnitTests._1_20
 {
     public class _1_TwoSum
     {

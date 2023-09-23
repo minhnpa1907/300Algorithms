@@ -1,4 +1,5 @@
-﻿namespace Algorithms.Models
+﻿// Author: minhnpa1907
+namespace Algorithms.Models
 {
     public class ListNode
     {
@@ -12,7 +13,7 @@
 
         public static ListNode MergeTwoLists(ListNode list1, ListNode list2)
         {
-            if (list1 is null && list2 is null) return new();
+            if (list1 is null && list2 is null) return null;
             if (list1 is null) return list2;
             if (list2 is null) return list1;
 
@@ -23,7 +24,7 @@
             }
             else
             {
-                list2.next = MergeTwoLists(list1, list2.next);
+                list2.next = MergeTwoLists(list2.next, list1);
                 return list2;
             }
         }

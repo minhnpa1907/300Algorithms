@@ -1,3 +1,4 @@
+// Author: minhnpa1907
 namespace Algorithms.UnitTests._1_20
 {
     public class _2_ValidParentheses
@@ -18,7 +19,7 @@ namespace Algorithms.UnitTests._1_20
             var output = Algorithms_1_20._2_ValidParentheses(input);
 
             // Assert
-            Assert.AreEqual(result, output);
+            Assert.That(output, Is.EqualTo(result));
         }
 
         [TestCase("()", false)]
@@ -32,7 +33,7 @@ namespace Algorithms.UnitTests._1_20
             var output = Algorithms_1_20._2_ValidParentheses(input);
 
             // Assert
-            Assert.AreNotEqual(result, output);
+            Assert.That(output, !Is.EqualTo(result));
         }
     }
 }

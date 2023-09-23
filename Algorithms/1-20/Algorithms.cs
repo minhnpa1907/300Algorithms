@@ -1,6 +1,7 @@
 ﻿using Algorithms.Logging;
 using Algorithms.Models;
 
+// Author: minhnpa1907
 namespace Algorithms
 {
     public class Algorithms_1_20
@@ -91,29 +92,18 @@ namespace Algorithms
             return output;
         }
 
-        public static void _3_MergeTwoLists()
+        public static ListNode _3_MergeTwoLists(ListNode list1, ListNode list2)
         {
             var func = nameof(_3_MergeTwoLists);
             Logger.LoggingStart(func);
 
-            // input
-            ListNode list1 = new(1, new ListNode(2, new ListNode(4)));
-            ListNode list2 = new(1, new ListNode(3, new ListNode(4)));
-
             // process
-            var outputNode = ListNode.MergeTwoLists(list1, list2);
-            var output = new List<int>() { outputNode.val };
-            var tempNode = list1.next;
-
-            while (tempNode is not null)
-            {
-                output.Add(tempNode.val);
-                tempNode = tempNode.next;
-            }
+            var output = ListNode.MergeTwoLists(list1, list2);
 
         printOutput:
             // output
-            Logger.LoggingStop(func, string.Join(", ", output));
+            Logger.LoggingStop(func, string.Join(", ", output.ToArray()));
+            return output;
         }
 
         public static void _4_MaxProfit()

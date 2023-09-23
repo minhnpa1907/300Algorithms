@@ -1,4 +1,5 @@
-﻿namespace Algorithms.Logging
+﻿// Author: minhnpa1907
+namespace Algorithms.Logging
 {
     internal class Logger
     {
