@@ -486,10 +486,12 @@ namespace Algorithms
                 var mid = min + (max - min) / 2;
                 if (mid >= bad) // is bad version?
                 {
+                    // current mid index is already a bad version, move search range to [min..mid-1] - skip [mid..max]
                     max = mid - 1;
                 }
                 else
                 {
+                    // current mid index is not a bad version, move search range to [mid+1..max] - skip [min..mid]
                     min = mid + 1;
                 }
             }
@@ -499,6 +501,95 @@ namespace Algorithms
         printOutput:
             // output
             Logger.LoggingStop(func, output.ToString());
+        }
+
+        public static bool _16_RansomNote(string ransomNote, string magazine)
+        {
+            var magazineChars = new char[26];
+
+            foreach (var c in magazine)
+            {
+                magazineChars[c - 'a']++;
+            }
+
+            foreach (var c in ransomNote)
+            {
+                if (magazineChars[c - 'a'] == 0)
+                {
+                    return false;
+                }
+
+                magazineChars[c - 'a']--;
+            }
+
+            GC.Collect();
+            return true;
+        }
+
+        public static int _17_ClimbStairs(int n)
+        {
+            if (n <= 3)
+            {
+                return n;
+            }
+
+            var visitedSteps = new int[n];
+            visitedSteps[0] = 1;
+            visitedSteps[1] = 2;
+            visitedSteps[2] = 3;
+
+            for (var i = 3; i < n; i++)
+            {
+                visitedSteps[i] = visitedSteps[i - 1] + visitedSteps[i - 2];
+            }
+
+            return visitedSteps[n - 1];
+        }
+
+        public static int _17_2_ClimbStairs(int n)
+        {
+            if (n <= 3)
+            {
+                return n;
+            }
+
+            // If top is starting from 4 (> 3), then we have at least 3 ways already
+            var result = 3;
+            var tempWays = 2; // we have 2 ways before index 3
+
+            for (var i = 4; i <= n; i++)
+            {
+                var temp = tempWays + result;
+                tempWays = result;
+                result = temp;
+            }
+
+            return result;
+        }
+
+        public static int _18_LongestPalindrome(string s)
+        {
+            var result = 0;
+            var hashChars = new HashSet<char>();
+
+            foreach (var c in s)
+            {
+                if (hashChars.Contains(c))
+                {
+                    result += 2;
+                    hashChars.Remove(c);
+                }
+                else
+                {
+                    hashChars.Add(c);
+                }
+            }
+
+            if (hashChars.Count != 0)
+            {
+                result++;
+            }
+            return result;
         }
     }
 }
