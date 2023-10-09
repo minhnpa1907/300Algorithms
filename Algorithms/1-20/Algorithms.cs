@@ -6,6 +6,12 @@ namespace Algorithms
 {
     public class Algorithms_1_20
     {
+        /// <summary>
+        /// Refs: https://leetcode.com/problems/two-sum
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public static int[] _1_TwoSum(int[] nums, int target)
         {
             var func = nameof(_1_TwoSum);
@@ -589,6 +595,64 @@ namespace Algorithms
             {
                 result++;
             }
+            return result;
+        }
+
+        /// <summary>
+        /// Refs: https://leetcode.com/problems/reverse-linked-list/
+        /// </summary>
+        /// <param name="head"></param>
+        /// <returns></returns>
+        public static ListNode _19_ReverseList(ListNode head)
+        {
+            if (head is null || head.next is null)
+            {
+                return head;
+            }
+
+            ListNode result = new(head.next.val);
+            var tempNode = head.next.next;
+            head.next = null;
+            result.next = head;
+
+            while (tempNode != null)
+            {
+                head = new(result.val, result.next);
+                result.val = tempNode.val;
+                result.next = head;
+                tempNode = tempNode.next;
+            }
+
+            GC.Collect();
+            return result;
+        }
+
+        /// <summary>
+        /// Refs: https://leetcode.com/problems/majority-element/
+        /// </summary>
+        /// <param name="nums"></param>
+        /// <returns></returns>
+        public static int _20_MajorityElement(int[] nums)
+        {
+            if (nums.Length == 1)
+            {
+                return nums[0];
+            }
+
+            var result = nums[0];
+            var appearTimes = 0;
+
+            foreach (var num in nums)
+            {
+                if (appearTimes == 0)
+                {
+                    result = num;
+                }
+
+                appearTimes += result == num ? 1 : -1;
+            }
+
+            GC.Collect();
             return result;
         }
     }
