@@ -4,7 +4,7 @@ using Algorithms.Models;
 // Author: minhnpa1907
 namespace Algorithms
 {
-    public class Algorithms_1_20
+    public static class Algorithms_1_20
     {
         /// <summary>
         /// Refs: https://leetcode.com/problems/two-sum
