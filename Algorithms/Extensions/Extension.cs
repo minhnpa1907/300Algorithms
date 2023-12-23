@@ -1,11 +1,15 @@
-using Algorithms.Models;
+using NPAM.Algorithms.Models;
+
+// Author: minhnpa1907@gmail.com
+
+namespace NPAM.Algorithms.Extensions;
 
 public static class Extension
 {
     public static ListNode? ToListNode(this int[] nums)
     {
         // Return null if nums is empty
-        if (!nums.Any())
+        if (nums.Length == 0)
         {
             return null;
         }
@@ -32,10 +36,10 @@ public static class Extension
     {
         if (nodes is null)
         {
-            return new int[] { };
+            return [];
         }
 
-        List<int> result = new() { nodes.val };
+        List<int> result = [nodes.val];
         var tempNode = nodes.next;
 
         // Loop and add node's value to list result until there is no next node
@@ -45,6 +49,44 @@ public static class Extension
             tempNode = tempNode.next;
         }
 
-        return result.ToArray();
+        return [.. result];
+    }
+
+    public static int[] ToArray(this TreeNode root)
+    {
+        if (root is null)
+        {
+            return [];
+        }
+
+        List<int> result = [root.val, .. root.GetNodeVal()];
+
+        return [.. result];
+    }
+
+    private static int[] GetNodeVal(this TreeNode root)
+    {
+        List<int> result = [];
+
+        if (root is not null)
+        {
+            // If left is still a node, then add its value to the list.
+            if (root.left is not null)
+            {
+                result.Add(root.left.val);
+            }
+
+            // If right is still a node, then add its value to the list.
+            if (root.right is not null)
+            {
+                result.Add(root.right.val);
+            }
+
+            result.AddRange(GetNodeVal(root.left));
+            result.AddRange(GetNodeVal(root.right));
+            return [.. result];
+        }
+
+        return [.. result];
     }
 }

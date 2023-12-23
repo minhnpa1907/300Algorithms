@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms", "Algorithms\Al
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.UnitTests", "Algorithms.UnitTests\Algorithms.UnitTests.csproj", "{0A39F7FA-9AF3-45BF-B5F0-7F232F89CE27}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms.xUnitTests", "Algorithms.xUnitTests\Algorithms.xUnitTests.csproj", "{07AD2360-310B-47C2-A3E1-11DFA80E0EC3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms.xUnitTests", "Algorithms.xUnitTests\Algorithms.xUnitTests.csproj", "{07AD2360-310B-47C2-A3E1-11DFA80E0EC3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1772D25D-8080-4133-9A81-252DC3075867}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -30,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{0A39F7FA-9AF3-45BF-B5F0-7F232F89CE27} = {1772D25D-8080-4133-9A81-252DC3075867}
+		{07AD2360-310B-47C2-A3E1-11DFA80E0EC3} = {1772D25D-8080-4133-9A81-252DC3075867}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {7A06FEB6-D194-4606-B603-C97DCBABB581}
