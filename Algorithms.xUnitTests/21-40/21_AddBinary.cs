@@ -1,5 +1,6 @@
 ﻿namespace NPAM.Algorithms.xUnitTests._21_40;
 
+[Trait(Constants.TRAIT_CATEGORY, Constants.TRAIT_UNIT_TEST)]
 public class _21_AddBinary
 {
     [Theory]

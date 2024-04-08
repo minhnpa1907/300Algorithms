@@ -1,5 +1,6 @@
 ﻿namespace NPAM.Algorithms.xUnitTests._1_20;
 
+[Trait(Constants.TRAIT_CATEGORY, Constants.TRAIT_UNIT_TEST)]
 public class _20_MajorityElement
 {
     [Theory]
